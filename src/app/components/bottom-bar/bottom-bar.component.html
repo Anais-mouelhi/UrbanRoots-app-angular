@@ -1,0 +1,25 @@
+<div class="fixed bottom-0 left-0 w-full bg-[#202427]  shadow-md ">
+  <div class="flex justify-around items-center p-2">
+    <button class="nav-button flex items-center p-2   rounded-full focus:outline-none "
+            [class.active]="activeButton === 'home'"
+            (click)="navigateTo('home')">
+      <i class="fas fa-home text-2xl "
+         [ngClass]="{'text-[#B7FA61]': activeButton === 'home', 'text-gray-500': activeButton !== 'home'}"></i>
+      <span [ngClass]="{'text-green-600': activeButton === 'home', 'text-gray-500': activeButton !== 'home'}">Accueil</span>
+    </button>
+    <button class="nav-button flex items-center p-2   rounded-full focus:outline-none"
+            [class.active]="activeButton === 'forum'"
+            (click)="navigateTo('forum')">
+      <i class="fas fa-comments text-2xl"
+         [ngClass]="{'text-[#B7FA61]': activeButton === 'forum', 'text-gray-500': activeButton !== 'forum'}"></i>
+      <span [ngClass]="{'text-green-600': activeButton === 'forum', 'text-gray-500': activeButton !== 'forum'}">Forum</span>
+    </button>
+    <button class="nav-button flex items-center p-2   rounded-full focus:outline-none"
+            [class.active]="activeButton === 'profile'"
+            (click)="navigateTo('profile')">
+      <i class="fas fa-user text-2xl"
+         [ngClass]="{'text-[#B7FA61]': activeButton === 'profile', 'text-gray-500': activeButton !== 'profile'}"></i>
+      <span [ngClass]="{'text-green-600': activeButton === 'profile', 'text-gray-500': activeButton !== 'profile'}">Profile</span>
+    </button>
+  </div>
+</div>

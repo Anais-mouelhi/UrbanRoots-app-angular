@@ -1,0 +1,20 @@
+#map {
+  height: 100%; /* Assurez-vous que la carte prend toute la hauteur de son conteneur */
+  width: 100%; /* Assurez-vous que la carte prend toute la largeur de son conteneur */
+}
+
+.relative {
+  position: relative;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.z-10 {
+  z-index: 10; /* Assurez-vous que le z-index est suffisamment élevé pour être au-dessus de la carte */
+}
+
+.z-0 {
+  z-index: 0; /* La carte doit avoir un z-index plus bas */
+}

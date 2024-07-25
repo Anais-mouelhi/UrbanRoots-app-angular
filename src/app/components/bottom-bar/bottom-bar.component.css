@@ -1,0 +1,20 @@
+.nav-button span {
+    display: none;
+    margin-left: 8px;
+  }
+  .nav-button.active span {
+    display: inline;
+  }
+  .nav-button i.text {
+    color: #B7FA61; /* Couleur pour l'icône active */
+  }
+  .nav-button i.text-gray-500 {
+    color: #9CA3AF; /* Couleur pour l'icône inactive */
+  }
+  .nav-button span.text-green-600 {
+    color: #B7FA61; /* Couleur pour le texte actif */
+  }
+  .nav-button span.text-gray-500 {
+    color: #9CA3AF; /* Couleur pour le texte inactif */
+  }
+  
