@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';  // Importer FormsModule ici
 import { CommonModule } from '@angular/common';  // Assurez-vous d'importer CommonModule si nécessaire
 import { RouterModule } from '@angular/router';  // Importer RouterModule ici
+import { BottomBarComponent } from '../../components/bottom-bar/bottom-bar.component';
 
 interface Question {
   text: string;
@@ -16,7 +17,7 @@ interface Article {
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],  // Inclure RouterModule ici
+  imports: [CommonModule, FormsModule, RouterModule, BottomBarComponent],  // Inclure RouterModule ici
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css']
 })
@@ -53,6 +54,7 @@ export class QuizComponent {
   answers: string[] = new Array(this.questions.length).fill('');
   displayedArticles: Article[] = [];
   quizCompleted = false;
+  currentQuestionIndex = 0;
 
   submitQuiz(): void {
     this.displayedArticles = this.answers
@@ -61,9 +63,22 @@ export class QuizComponent {
     this.quizCompleted = true;
   }
 
+  previousQuestion(): void {
+    if (this.currentQuestionIndex > 0) {
+      this.currentQuestionIndex--;
+    }
+  }
+
+  nextQuestion(): void {
+    if (this.currentQuestionIndex < this.questions.length - 1) {
+      this.currentQuestionIndex++;
+    }
+  }
+
   resetQuiz(): void {
     this.answers = new Array(this.questions.length).fill('');
     this.displayedArticles = [];
     this.quizCompleted = false;
+    this.currentQuestionIndex = 0;
   }
 }

@@ -1,4 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 body {
   font-family: 'Poppins', sans-serif;
+
+}
+  .category-button {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.category-button:hover {
+    background-color: #004D3D;
+    color: white;
+}
+
+.card-img {
+    width: calc(100% - 16px);
+    height: auto;
+    margin: 8px;
+    border-radius: 8px;
+}
+
+.explore-more-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.explore-more-profile-img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+  }
 }

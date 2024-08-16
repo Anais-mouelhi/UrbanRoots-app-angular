@@ -1,66 +1,79 @@
-
- <!DOCTYPE html>
- <html lang="fr">
- <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Page avec Poppins</title>
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-
- </head>
-<body class="bg-gray-100 mb-5 font-poppins ">
-   
-     
-      
-    
- 
- 
- <!-- Main Content -->
-  <div class="container mx-auto mb-4  ">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page avec Poppins</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-poppins">
+  <!-- Main Content -->
+  <div class="container mx-auto py-8">
     <!-- Welcome Section -->
-    <div class="main-content p-4">
-        <!-- Welcome Section -->
-        <div class="mb-4 p-4 bg-[#004D3D] text-white rounded-lg">
-            
-                <img src="../../../assets/img/logo2.png" alt="Urbanroots_logo" class="w-20 h-15 mb-2 absolute right-8 top-4" />
-            
-          <h2 class="text-4xl font-thin   ">Bienvenue,</h2>
-          <h1 class="text-2xl font-thin">{{ user?.username }}</h1>
-        </div>
-   
-
-    <!-- Search Bar -->
-    <div class="mb-4">
-      <div class="relative">
-        <input type="text" class="w-full p-2 pl-10 rounded-full bg-white shadow" placeholder="recherche">
-        <i class="fas fa-search absolute right-3 top-2.5 text-gray-400"></i>
+    <div class="main-content px-4 mb-8">
+      <div class="mb-6 p-6 bg-[#004D3D] text-white rounded-lg relative">
+        <img src="../../../assets/img/logo2.png" alt="Urbanroots_logo" class="w-20 h-15 mb-2 absolute right-8 top-4" />
+        <h2 class="text-4xl font-thin">Bienvenu,</h2>
+        <h1 class="text-2xl font-thin">{{ user?.username }}</h1>
       </div>
+      <!-- Search Bar -->
+      <div class="mb-8 relative">
+        <input type="text" class="w-full p-3 pl-12 rounded-full bg-white shadow" placeholder="Recherche">
+        <i class="fas fa-search absolute right-4 top-3 text-gray-400"></i>
+      </div>
+      <!-- Categories Section -->
+      <div class="mb-8">
+        <h2 class="text-3xl font-thin text-[#004D3D]">Explorez</h2>
+        <h1 class="text-4xl font-bold text-[#004D3D] mt-1">les jardins !</h1>
+        <div class="flex space-x-4 mt-4">
+          <button class="px-4 py-2 bg-[#004D3D] text-white rounded-full">All</button>
+          <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full">Jardins</button>
+          <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full">Guides</button>
+        </div>
+      </div>
+      <!-- Cards Section -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden ">
+          <div class="relative">
+              <img src="/assets/img/Frame1.png" alt="Lake Braise" class="card-img object-cover w-full h-38">
+              <!-- <div class="absolute top-2 right-2 bg-white text-yellow-500 px-2 py-1 rounded-full text-sm">★</div> -->
+          </div>
+          <div class="p-2">
+              <h3 class="text-lg font-semibold">Explorez la nature</h3>
+              <button (click)="navigateToMap()" class="bg-[#202427] text-[#B7FA61] px-4 py-2 rounded-full mt-2">Voir</button>
+          </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden ">
+        <div class="relative">
+            <img src="/assets/img/Frame2.png" alt="Lake Braise" class="card-img object-cover w-full h-38">
+             <!-- <div class="absolute top-2 right-2 bg-white text-yellow-500 px-2 py-1 rounded-full text-sm">★</div> -->
+        </div>
+        <div class="p-2">
+            <h3 class="text-l font-semibold">Découvrez tous les secrets du jardinage</h3>
+            <button (click)="navigateToQuiz()" class="bg-[#202427] text-[#B7FA61] px-4 py-2 rounded-full mt-2">Voir</button>
+        </div>
     </div>
-
-
-
-
-    <!-- Cards Section -->
-    <div class="space-y-5">
-      <div class="bg-[#004D3D] rounded-lg shadow-lg overflow-hidden">
-        <img src="/assets/img/Banner.png" alt="Ice Cream" class="w-full">
-        <div class="p-4">
-          <h2 class="text-lg text-white">Explorez la nature</h2>
-          <button (click)="navigateToMap()"  class="bg-[#202427] text-[#B7FA61] px-4 py-2 rounded-full mt-2">Voir</button>
+      
+  </div>
+      <!-- Explore more Section -->
+      <div class="mt-10">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-2xl font-thin text-[#004D3D]">En savoir plus</h2>
+          <a href="#" class="text-[#004D3D]">See all</a>
         </div>
-      </div>
-      <div class="bg-[#004D3D] rounded-lg shadow-lg overflow-hidden">
-        <img src="/assets/img/Banner2.png" alt="Ice Cream" class="w-full">
-        <div class="p-4">
-          <h2 class="text-lg text-white">Découvrez tous les secrets du jardinage</h2>
-          <button (click)=" navigateToQuiz()"  class="bg-[#202427] text-[#B7FA61] px-4 py-2 rounded-full mt-2">Voir </button>
+        <div class="grid grid-cols-1 gap-4">
+          <div class="relative rounded-lg shadow-lg overflow-hidden">
+            <img src="/assets/img/guide4.webp" alt="Bali" class="w-full h-32 object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center p-4">
+              <h3 class="text-lg font-semibold text-white">Guide Éducatif sur le Jardinage et la Durabilité</h3>
+              <p class="text-gray-300">Indonesia</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-</div>
-</body>
-
   <app-bottom-bar></app-bottom-bar>
+</body>
+</html>
