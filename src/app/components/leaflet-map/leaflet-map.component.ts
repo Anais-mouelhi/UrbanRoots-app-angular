@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BottomBarComponent } from '../bottom-bar/bottom-bar.component';
 import { environment } from '../../../environments/environment';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-leaflet-map',
@@ -31,7 +31,8 @@ export class LeafletMapComponent implements AfterViewInit, OnDestroy {
   private urbanSpaces: any[] = [];
   public resultsCount: number = 0;
 
-  constructor(private http: HttpClient) {}
+  
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngAfterViewInit(): void {
     this.loadMap();
@@ -211,5 +212,10 @@ export class LeafletMapComponent implements AfterViewInit, OnDestroy {
       // You can display an error message or other notification here
     }
   }
+  public goToQuiz(): void {
+    // Si tu utilises Angular Router pour la navigation
+    this.router.navigate(['/home']);
+  }
+
   
 }

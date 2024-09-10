@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';  // Importer FormsModule ici
-import { CommonModule } from '@angular/common';  // Assurez-vous d'importer CommonModule si nécessaire
-import { RouterModule } from '@angular/router';  // Importer RouterModule ici
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { BottomBarComponent } from '../../components/bottom-bar/bottom-bar.component';
 
 interface Question {
@@ -17,24 +17,15 @@ interface Article {
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, BottomBarComponent],  // Inclure RouterModule ici
+  imports: [CommonModule, FormsModule, RouterModule, BottomBarComponent],
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css']
 })
-export class QuizComponent {
+export class QuizComponent implements OnInit {
   questions: Question[] = [
-    {
-      text: "Quel type de sol avez-vous?",
-      options: ["Argileux", "Sableux", "Limoneux", "Tourbeux"]
-    },
-    {
-      text: "Combien de soleil reçoit votre jardin?",
-      options: ["Plein soleil", "Mi-ombre", "Ombre complète"]
-    },
-    {
-      text: "À quelle fréquence arrosez-vous vos plantes?",
-      options: ["Tous les jours", "Deux fois par semaine", "Une fois par semaine", "Moins d'une fois par semaine"]
-    }
+    { text: "Quel type de sol avez-vous?", options: ["Argileux", "Sableux", "Limoneux", "Tourbeux"] },
+    { text: "Combien de soleil reçoit votre jardin?", options: ["Plein soleil", "Mi-ombre", "Ombre complète"] },
+    { text: "À quelle fréquence arrosez-vous vos plantes?", options: ["Tous les jours", "Deux fois par semaine", "Une fois par semaine", "Moins d'une fois par semaine"] }
   ];
 
   articles: Record<string, Article> = {
@@ -56,11 +47,34 @@ export class QuizComponent {
   quizCompleted = false;
   currentQuestionIndex = 0;
 
+  ngOnInit(): void {
+    this.loadQuizState();
+  }
+
+  loadQuizState(): void {
+    const savedAnswers = localStorage.getItem('quizAnswers');
+    const quizCompleted = localStorage.getItem('quizCompleted');
+
+    if (savedAnswers) {
+      this.answers = JSON.parse(savedAnswers);
+      this.quizCompleted = quizCompleted === 'true';
+
+      if (this.quizCompleted) {
+        this.displayedArticles = this.answers
+          .map(answer => this.articles[answer])
+          .filter(article => article !== undefined) as Article[];
+      }
+    }
+  }
+
   submitQuiz(): void {
     this.displayedArticles = this.answers
       .map(answer => this.articles[answer])
       .filter(article => article !== undefined) as Article[];
+
     this.quizCompleted = true;
+    localStorage.setItem('quizAnswers', JSON.stringify(this.answers));
+    localStorage.setItem('quizCompleted', 'true');
   }
 
   previousQuestion(): void {
@@ -80,5 +94,7 @@ export class QuizComponent {
     this.displayedArticles = [];
     this.quizCompleted = false;
     this.currentQuestionIndex = 0;
+    localStorage.removeItem('quizAnswers');
+    localStorage.removeItem('quizCompleted');
   }
 }

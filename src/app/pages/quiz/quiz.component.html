@@ -1,14 +1,15 @@
-<div class="bg-[#202427]  font-poppins min-h-screen flex flex-col">
+<div class="bg-[#202427] font-poppins min-h-screen flex flex-col">
   <div class="bg-opacity-50 backdrop-blur-sm rounded-lg p-6 ">
     <h2 class="text-4xl font-bold text-[#B7FA61] text-center">Bilan Éco-Jardin</h2>
     <h1 class="text-1xl font-thin text-[#B7FA61] text-center">Évaluez Votre Jardin pour un Avenir Durable !</h1>
 
+    <!-- Section Quiz -->
     <div *ngIf="!quizCompleted" class="py-4">
       <form (ngSubmit)="submitQuiz()">
-        <div class=" p-3 py-1 bg-[#202427] rounded-md ">
+        <div class="p-3 py-1 bg-[#202427] rounded-md">
           <h2 class="p-3 text-lg font-semibold mb-2 text-white rounded">{{ questions[currentQuestionIndex].text }}</h2>
           <div *ngFor="let option of questions[currentQuestionIndex].options">
-            <label class="block  text-white font-poppins mb-4 p-4 border-1 border-[#B7FA61] rounded-md flex justify-between items-center">
+            <label class="block text-white font-poppins mb-4 p-4 border-1 border-[#B7FA61] rounded-md flex justify-between items-center">
               {{ option }}
               <input type="radio" name="question{{ currentQuestionIndex }}" [value]="option" [(ngModel)]="answers[currentQuestionIndex]" required>
             </label>
@@ -22,24 +23,25 @@
       </form>
     </div>
 
+    <!-- Section Résultats -->
     <div *ngIf="quizCompleted">
-      <div class="">
-       
+      <div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
           <div *ngFor="let article of displayedArticles; let i = index" class="relative">
             <div class="absolute top-2 right-2 bg-[#202427] text-[#B7FA61] rounded-full w-8 h-8 flex items-center justify-center z-10">{{ i + 1 }}</div>
             <div [ngClass]="{' bg-[#004D3D]': i % 4 === 0, ' bg-[#B7FA61]': i % 4 === 1, 'bg-green-400': i % 4 === 2, 'bg-red-200': i % 4 === 3}" class="card shadow-lg rounded-lg overflow-hidden p-4">
-              <h3 class="text-xl  font-semibold mb-2">{{ article.title }}</h3>
+              <h3 class="text-xl font-semibold mb-2">{{ article.title }}</h3>
               <p class="text-white mb-4">{{ article.content }}</p>
             </div>
           </div>
         </div>
-        <!-- <button (click)="resetQuiz()" class="bg-[#202427] text-[#B7FA61] px-4 py-2 rounded-full mt-8">Recommencer le Quiz</button> -->
       </div>
+      <button (click)="resetQuiz()" class="bg-[#004D3D] text-white px-4 py-2 rounded mt-4">Recommencer le Quiz</button>
+
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-        <div class="  p-2  mb-4">
-        <h2 class="text-6xl font-thin text-white   ">Découvrez </h2>
-        <h1 class="text-4xl font-bold text-white "> Les Secrets Du jardinage !</h1>
+        <div class="p-2 mb-4">
+          <h2 class="text-6xl font-thin text-white">Découvrez </h2>
+          <h1 class="text-4xl font-bold text-white">Les Secrets Du jardinage !</h1>
         </div>
         <div class="relative mt-4">
           <div class="flex overflow-x-auto hide-scroll-bar space-x-4">
@@ -67,5 +69,4 @@
       </div>
     </div>
   </div>
-
- 
+</div>
